@@ -3,7 +3,10 @@ import { forwardRef, useEffect, useImperativeHandle, useRef, type PropsWithChild
 interface ModalProps extends PropsWithChildren {
   onClose?: () => void;
 }
-export const Modal = forwardRef<HTMLDialogElement, ModalProps>(({ onClose, ...props }, ref) => {
+export const Modal = forwardRef<HTMLDialogElement, ModalProps>(function Modal(
+  { onClose, ...props },
+  ref
+) {
   const dialogRef = useRef<HTMLDialogElement | null>(null);
   useImperativeHandle(ref, () => dialogRef.current as HTMLDialogElement);
 

@@ -12,7 +12,7 @@ interface ApplicationForm {
   onClose: () => void;
 }
 export const ApplicationForm = forwardRef<HTMLFormElement, ApplicationForm>(
-  ({ onSubmit, onClose }, ref) => {
+  function ApplicationForm({ onSubmit, onClose }, ref) {
     const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
       e.preventDefault();
       const form = e.currentTarget;
