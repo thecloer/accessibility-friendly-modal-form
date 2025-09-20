@@ -1,10 +1,11 @@
-import { forwardRef, useEffect, useRef, type PropsWithChildren } from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useRef, type PropsWithChildren } from 'react';
 
 interface ModalProps extends PropsWithChildren {
   onClose?: (result: FormData | null) => void;
 }
 export const Modal = forwardRef<HTMLDialogElement, ModalProps>(({ onClose, ...props }, ref) => {
   const dialogRef = useRef<HTMLDialogElement | null>(null);
+  useImperativeHandle(ref, () => dialogRef.current as HTMLDialogElement);
 
   const handleClick: React.MouseEventHandler<HTMLDialogElement> = (e) => {
     if (isBackdropClicked(e)) {
@@ -14,19 +15,12 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(({ onClose, ...pr
   };
 
   useEffect(() => {
-    if (!ref) return;
-    if (typeof ref === 'function') ref(dialogRef.current);
-    else ref.current = dialogRef.current;
-  }, [ref]);
-
-  useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
 
-    const onCloseEvent = () => {
-      onClose?.(null);
-    };
-    dialog.addEventListener('cancel', () => {});
+    const onCloseEvent = () => onClose?.(null);
+
+    // dialog.addEventListener('cancel', () => {}); ESC 동작 커스텀
     dialog.addEventListener('close', onCloseEvent);
     return () => {
       dialog.removeEventListener('close', onCloseEvent);
