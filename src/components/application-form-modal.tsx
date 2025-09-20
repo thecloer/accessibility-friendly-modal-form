@@ -29,7 +29,7 @@ export const useApplicationFormModal = () => {
 
     return (
       <Modal ref={dialogRef} onClose={handelClose}>
-        <div className='flex flex-col gap-4 bg-white w-[min(92vw,520px)]'>
+        <div className='flex flex-col gap-4 bg-white w-[min(92vw,520px)] max-h-[90vh]'>
           <header className='px-8 pt-6'>
             <h2 className='mb-2 font-extrabold text-3xl'>신청 폼</h2>
             <p className='font-semibold text-neutral-500'>

@@ -23,11 +23,28 @@ export const Modal = forwardRef<HTMLDialogElement, ModalProps>(({ onClose, ...pr
     return () => dialog.removeEventListener('close', onClose);
   }, [onClose]);
 
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+
+    const toggleBodyScroll = () => {
+      document.body.style.overflow = dialog.open ? 'hidden' : '';
+    };
+
+    const observer = new MutationObserver(toggleBodyScroll);
+    observer.observe(dialog, { attributes: true, attributeFilter: ['open'] });
+
+    return () => {
+      observer.disconnect();
+      document.body.style.overflow = '';
+    };
+  }, []);
+
   return (
     <dialog
       ref={dialogRef}
       onClick={handleClick}
-      className='open:block top-1/2 left-1/2 fixed backdrop:bg-neutral-500 shadow-xl rounded-2xl -translate-x-1/2 -translate-y-1/2'
+      className='open:block top-1/2 left-1/2 fixed backdrop:bg-neutral-800/50 shadow-xl rounded-2xl -translate-x-1/2 -translate-y-1/2'
       {...props}
     />
   );
