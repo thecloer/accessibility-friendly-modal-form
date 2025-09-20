@@ -1,10 +1,10 @@
-import { Button, useFormModal, ApplicationFormFields } from './components';
+import { Button, useApplicationFormModal } from './components';
 
 const ModalFormPage = () => {
-  const { FormModal, openFormModal } = useFormModal();
+  const { ApplicationFormModal, openApplicationFormModal } = useApplicationFormModal();
 
   const handleButton = async () => {
-    const result = await openFormModal();
+    const result = await openApplicationFormModal();
     console.log(result);
     if (result != null) console.log(result?.get('name'));
   };
@@ -17,9 +17,7 @@ const ModalFormPage = () => {
         </Button>
       </div>
 
-      <FormModal title='신청 폼' description='이메일과 FE 경력 연차 등 간단한 정보를 입력해주세요.'>
-        <ApplicationFormFields />
-      </FormModal>
+      <ApplicationFormModal />
     </>
   );
 };
