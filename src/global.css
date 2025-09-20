@@ -1,1 +1,15 @@
 @import 'tailwindcss';
+
+@layer components {
+  .label {
+    @apply font-semibold;
+  }
+
+  .field {
+    @apply px-3.5 py-3 border border-neutral-200 rounded font-medium;
+  }
+
+  .field-wrapper {
+    @apply flex flex-col gap-1.5 w-full;
+  }
+}
