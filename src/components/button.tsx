@@ -1,22 +1,18 @@
-import type { FC, PropsWithChildren } from 'react';
+import type { FC, ButtonHTMLAttributes } from 'react';
 
 type ButtonVariant = 'mute' | 'primary';
 
-interface ButtonProps extends PropsWithChildren {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
-
-export const Button: FC<ButtonProps> = ({ children, variant = 'mute', onClick }) => {
+export const Button: FC<ButtonProps> = ({ className = '', variant = 'mute', ...props }) => {
   const color = getColor(variant);
-  return (
-    <button className={`px-3 py-2.5 rounded-lg cursor-pointer ${color}`} onClick={onClick}>
-      {children}
-    </button>
-  );
+  return <button className={`px-3 py-2 rounded cursor-pointer ${color} ${className}`} {...props} />;
 };
 
 const getColor = (variant: ButtonVariant) => {
-  if (variant === 'primary') return 'bg-blue-500 text-white hover:bg-blue-600 active:bg-blue-700';
-  return 'bg-neutral-400';
+  if (variant === 'primary') return 'bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800';
+  if (variant === 'mute')
+    return 'bg-neutral-200 text-black hover:bg-neutral-300 active:bg-neutral-400';
+  return '';
 };
