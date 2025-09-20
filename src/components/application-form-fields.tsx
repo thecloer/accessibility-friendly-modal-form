@@ -1,6 +1,5 @@
 import type { FC } from 'react';
-import { Input } from './input';
-import { Select } from './select';
+import { Input, Select } from './base';
 
 const careerOptions = [
   { value: '0~3년', label: '0~3년' },
