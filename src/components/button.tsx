@@ -4,11 +4,16 @@ type ButtonVariant = 'mute' | 'primary';
 
 interface ButtonProps extends PropsWithChildren {
   variant?: ButtonVariant;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export const Button: FC<ButtonProps> = ({ children, variant = 'mute' }) => {
+export const Button: FC<ButtonProps> = ({ children, variant = 'mute', onClick }) => {
   const color = getColor(variant);
-  return <button className={`px-3 py-2.5 rounded-lg cursor-pointer ${color}`}>{children}</button>;
+  return (
+    <button className={`px-3 py-2.5 rounded-lg cursor-pointer ${color}`} onClick={onClick}>
+      {children}
+    </button>
+  );
 };
 
 const getColor = (variant: ButtonVariant) => {

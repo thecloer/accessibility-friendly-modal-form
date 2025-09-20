@@ -3,6 +3,8 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "module": "preserve",
+    "target": "ES2015",
+    "lib": ["ES2015", "DOM"],
     "moduleResolution": "bundler",
     "noEmit": true,
     "skipLibCheck": true,
