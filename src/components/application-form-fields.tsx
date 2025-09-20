@@ -1,5 +1,12 @@
 import type { FC } from 'react';
 import { Input } from './input';
+import { Select } from './select';
+
+const careerOptions = [
+  { value: '0~3년', label: '0~3년' },
+  { value: '4~7년', label: '4~7년' },
+  { value: '8년 이상', label: '8년 이상' },
+];
 
 export const ApplicationFormFields: FC = () => (
   <>
@@ -7,16 +14,13 @@ export const ApplicationFormFields: FC = () => (
 
     <Input label='이메일' name='email' type='email' required autoComplete='email' />
 
-    <div>
-      <label htmlFor='career' className='font-medium'>
-        FE 경력 연차
-      </label>
-      <select id='career' name='career' className='px-3 py-2 border rounded w-full'>
-        <option>0 ~ 3년차</option>
-        <option>4 ~ 7년차</option>
-        <option>8년차 이상</option>
-      </select>
-    </div>
+    <Select label='FE 경력 연차' name='career' aria-label='career'>
+      {careerOptions.map(({ value, label }) => (
+        <option value={value} aria-label={label}>
+          {label}
+        </option>
+      ))}
+    </Select>
 
     <Input label='GitHub 링크 (선택)' name='github' type='url' autoComplete='email' />
   </>
