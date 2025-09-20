@@ -16,7 +16,7 @@ export const ApplicationFormFields: FC = () => (
 
     <Select label='FE 경력 연차' name='career' aria-label='career'>
       {careerOptions.map(({ value, label }) => (
-        <option value={value} aria-label={label}>
+        <option key={value} value={value} aria-label={label}>
           {label}
         </option>
       ))}
