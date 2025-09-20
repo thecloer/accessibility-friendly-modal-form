@@ -10,7 +10,7 @@ export const Input: FC<InputProps> = ({ id: customId, label, className = '', ...
   return (
     <div className={`field-wrapper ${className}`}>
       {label == null ? null : (
-        <label htmlFor={id} className='label'>
+        <label htmlFor={id} aria-label={label} className='label'>
           {label}
         </label>
       )}

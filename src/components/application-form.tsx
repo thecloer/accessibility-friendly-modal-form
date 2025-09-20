@@ -21,26 +21,12 @@ export const ApplicationForm = forwardRef<HTMLFormElement, ApplicationForm>(
     };
 
     return (
-      <form ref={ref} onSubmit={handleSubmit} className='flex flex-col gap-3 px-8'>
-        <Input
-          label='이름 / 닉네임'
-          aria-label='닉네임'
-          name='name'
-          type='text'
-          required
-          autoComplete='name'
-        />
+      <form ref={ref} onSubmit={handleSubmit} className='flex flex-col gap-3.5'>
+        <Input label='이름 / 닉네임' name='name' type='text' required autoComplete='name' />
 
-        <Input
-          label='이메일'
-          aria-label='이메일'
-          name='email'
-          type='email'
-          required
-          autoComplete='email'
-        />
+        <Input label='이메일' name='email' type='email' required autoComplete='email' />
 
-        <Select label='FE 경력 연차' aria-label='FE 경력 연차' name='career' defaultValue={''}>
+        <Select label='FE 경력 연차' name='career' defaultValue={''} required>
           <option value='' disabled hidden>
             선택해주세요
           </option>
@@ -54,14 +40,13 @@ export const ApplicationForm = forwardRef<HTMLFormElement, ApplicationForm>(
 
         <Input
           label='GitHub 링크 (선택)'
-          aria-label='github 링크'
           name='github'
           type='url'
           autoComplete='email'
           placeholder='https//:github.com/username'
         />
 
-        <footer className='flex justify-end items-center gap-2 mt-6 px-8 pb-6'>
+        <footer className='flex justify-end items-center gap-2 mt-2'>
           <Button onClick={onClose}>취소</Button>
           <Button variant='primary' type='submit'>
             제출하기
