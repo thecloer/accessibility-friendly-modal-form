@@ -28,8 +28,8 @@ export const ApplicationFormFields: FC = () => (
       autoComplete='email'
     />
 
-    <Select label='FE 경력 연차' aria-label='FE 경력 연차' name='career'>
-      <option value='' disabled selected hidden>
+    <Select label='FE 경력 연차' aria-label='FE 경력 연차' name='career' defaultValue={''}>
+      <option value='' disabled hidden>
         선택해주세요
       </option>
 
